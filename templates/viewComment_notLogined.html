@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+	Subject: {{ post.subject }}
+</div>
+<div class="row">
+	Content: {{ post.content }}
+</div>
+<div class="row">
+	<h3>Comments</h3>
+	{% if comments %}
+		{% for comment in comments %}
+			{{ comment.content }}
+			<br>
+			by <span class="blue">{{ comment.author.get().name }}</span>
+			<br>
+		{% endfor %}
+
+	{% else %}
+	No comments
+	{% endif %}
+</div>
+<div class="row">
+{% endblock %}

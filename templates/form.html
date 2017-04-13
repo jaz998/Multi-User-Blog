@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+<a class="logout login" href="/login">Login</a>
+</div>
+<div>
+<h2>Sign up</h2>
+<form method="POST">
+Username <input type="text" name="username" value="{{ usernameValue }}"> <span class="warningMessage">{{ usernameMessage }}</span>
+<br><br>
+Password <input type="password" name="password"> <span class="warningMessage">{{ passwordMessage }}</span>
+<br><br>
+Verify Password <input type="password" name="verifyPassword"> <span class="warningMessage">{{ verifyPasswordMessage }}</span>
+<br><br>
+Email(optional) <input type="text" name="email"> <span class="warningMessage">{{ emailMessage }}</span>
+<br><br>
+<input type="submit">
+<div>
+	{{ error }}
+</div>
+</form>
+</div>
+{% endblock %}
+
+

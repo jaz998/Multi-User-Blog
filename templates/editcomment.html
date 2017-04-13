@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div> 
+	<h5>Edit Comment</h5>
+</div>
+<form action="{{ uri_for("updatecomment", post_id = post.key.id(), comment_id = comment.key.id()) }}" method="post"> 
+<div class="row">
+	<textarea name="content" rows="8" cols="50">{{ comment.content }}</textarea>	
+	<br>	
+	<input type="submit" value="submit">
+</div>
+</form>
+{% endblock %}

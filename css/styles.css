@@ -1,0 +1,53 @@
+input {
+	margin-bottom: 0.8em;
+}
+
+.warningMessage {
+	color: red;
+}
+
+#welcome {
+	width: 50%;
+	float: left;
+}
+
+.login, .signup{
+	text-align: right;
+	float: right;
+	width: 50%;
+	top: 10px;	
+}
+
+.logout {
+	margin-left: 10px;
+}
+
+
+#baseHeader {
+	text-align: center;
+	text-decoration: none;
+	color: black;
+}
+
+#login-area {
+	float: left;
+	margin-right: 10px;
+}
+
+#signup-area {
+}
+
+#mainPageLoginMargin {
+	margin-left: 2px;
+}
+
+.blue {
+	color: dodgerblue;
+}
+
+
+
+
+
+
+
