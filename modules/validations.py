@@ -11,7 +11,6 @@ def get_user(f):
 		user = None
 		user_id = self.read_secure_cookie('user_id')
 		self.write("Wrapper is running")
-		self.write("User ID is"+user_id)
 		if user_id:
 			self.write("If user ID is running\n")
 			user = ndb.Key('User', int(user_id), parent=parent_key.users_key()).get()

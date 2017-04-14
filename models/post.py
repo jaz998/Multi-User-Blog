@@ -64,7 +64,6 @@ class Post(ndb.Model):
 		else:
 			return False
 
-	@comment_exists
 	def get_comments(self):
 		return Comment.get_comments(self)
 
