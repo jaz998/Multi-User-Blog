@@ -4,11 +4,10 @@ import modules.parent_keys as parent_key
 from models.comment import Comment
 from models.post import Post
 from modules.validations import require_user
-
+from modules.validations import comment_exists
 
 class ViewComment(MainHandler):
-	@require_user()
-	def get(self, user):
+	def get(self):
 		post_id = self.request.get("post_id")
 		keyPost = ndb.Key('Post', int(post_id), parent=parent_key.blog_key())
 		post = keyPost.get()

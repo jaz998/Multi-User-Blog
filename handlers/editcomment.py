@@ -7,9 +7,7 @@ from modules.validations import comment_exists
 
 
 class EditComment(MainHandler):
-	@comment_exists
 	@user_owns_comment
-
 	def get(self):
 		post_id = self.request.get("post_id")
 		keyPost = ndb.Key('Post', int(post_id), parent=parent_key.blog_key())

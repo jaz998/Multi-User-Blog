@@ -6,7 +6,7 @@ from modules.validations import require_user
 
 class PostComment(MainHandler):
 	@require_user()
-	def post(self):
+	def post(self, user):
 		content = self.request.get("content")
 		post_id = self.request.get("post_id")
 		keyPost = ndb.Key('Post', int(post_id), parent=parent_key.blog_key())

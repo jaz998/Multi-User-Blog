@@ -26,8 +26,6 @@ def require_user(redirect=None):
             if user:
                 return f(self, user, *a, **kw)
             else:
-                # If there isn't a logged in user, clear user cookies
-                self.clear_cookie('user_id')
                 if redirect:
                     self.redirect_to(redirect)
                 else:
