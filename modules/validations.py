@@ -71,6 +71,8 @@ def comment_exists(f):
 
 def user_owns_comment(f):
     @wraps(f)
+    @comment_exists
+    @require_user()
     def wrapper(self, user, comment, comment_key, *a, **kw):
         if user.key == comment.author:
             return f(self, user, comment, comment_key, *a, **kw)

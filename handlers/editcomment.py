@@ -7,12 +7,16 @@ from modules.validations import comment_exists
 
 
 class EditComment(MainHandler):
-	@user_owns_comment
 	def get(self):
+		user = self.request.get("user")
 		post_id = self.request.get("post_id")
 		keyPost = ndb.Key('Post', int(post_id), parent=parent_key.blog_key())
 		post = keyPost.get()
 		comment_id = self.request.get("comment_id")
-		key = ndb.Key('Comment', int(comment_id), parent = post.key)
-		comment = key.get()
-		self.render('editcomment.html', comment = comment, post = post)
+		comment_key = ndb.Key('Comment', int(comment_id), parent = post.key)
+		comment = comment_key.get()
+		@user_owns_comment
+		def render(comment, post):
+			self.render('editcomment.html', comment = comment, post = post)
+
+		render(user, comment, post)
