@@ -1,6 +1,8 @@
 from google.appengine.ext import ndb
 from handlers.mainhandler import MainHandler
 from models.post import Post
+import modules.parent_keys as parent_key
+
 
 
 class MainPage(MainHandler):
@@ -15,8 +17,11 @@ class MainPage(MainHandler):
 			self.render("mainPage.html", posts = posts)
 
 	def post(self):
-		self.render("editPost.html", postKey = self.request.get("postKey"),
+		self.render("editPost.html", 
+			user = self.user,
+			post_id = self.request.get("post_id"),
+			post = ndb.Key('Post', int(self.request.get("post_id")), parent=parent_key.blog_key()).get(),
+			postKey = self.request.get("postKey"),
 			subjectValue = self.request.get("subjectValue"),
 			contentValue = self.request.get("contentValue"),
-			postValue = self.request.get("postValue"),
-			post_id = self.request.get("post_id"))
+			postValue = self.request.get("postValue"))

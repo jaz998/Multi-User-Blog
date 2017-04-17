@@ -5,8 +5,8 @@ from modules.validations import user_owns_comment
 
 
 class DeleteComment(MainHandler):
-	@user_owns_comment
 	def get(self):
+		user = self.request.get("user")
 		post_id = self.request.get("post_id")
 		keyPost = ndb.Key('Post', int(post_id), parent=parent_key.blog_key())
 		post = keyPost.get()
@@ -14,4 +14,8 @@ class DeleteComment(MainHandler):
 		key = ndb.Key('Comment', int(comment_id), parent = post.key)
 		comment = key.get()
 		comment.delete()
-		self.render('viewcomment.html',post=post,comments = post.get_comments(), user = self.user)
+		@user_owns_comment
+		def render(self, post, comments):
+			self.render('viewcomment.html',post=post,comments = post.get_comments(), user = self.user)
+
+		render(user, comment, post)

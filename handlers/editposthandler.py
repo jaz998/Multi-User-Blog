@@ -4,7 +4,6 @@ import modules.parent_keys as parent_key
 from modules.validations import user_owns_post
 
 class EditPost(MainHandler):
-	@user_owns_post
 	def post(self):
 		subject = self.request.get("subjectValue")
 		content = self.request.get("contentValue")
@@ -13,3 +12,4 @@ class EditPost(MainHandler):
 		post = key.get()
 		post.update(subject, content)
 		self.render("PostEditedConfo.html")
+
