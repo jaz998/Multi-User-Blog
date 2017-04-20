@@ -1,9 +1,7 @@
 from handlers.mainhandler import MainHandler
 from google.appengine.ext import ndb
 import modules.parent_keys as parent_key
-from modules.validations import user_owns_post
 from modules.myownvalidations import post_exists
-from modules.myownvalidations import require_user
 
 class EditPost(MainHandler):
 	@post_exists

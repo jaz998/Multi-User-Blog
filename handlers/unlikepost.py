@@ -1,12 +1,10 @@
 from handlers.mainhandler import MainHandler
 from google.appengine.ext import ndb
 import modules.parent_keys as parent_key
-from modules.validations import user_can_unlike_post
 
 
 
 class  UnlikePost(MainHandler):
-	@user_can_unlike_post
 	def post(self):
 		post_id = self.request.get("post_id")
 		user_id = self.request.get("user_id")

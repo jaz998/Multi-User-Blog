@@ -2,7 +2,6 @@ from google.appengine.ext import ndb
 from handlers import mainhandler
 from models.comment import Comment
 from models.user import User
-from modules.validations import comment_exists
 
 
 

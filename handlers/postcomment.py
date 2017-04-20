@@ -2,10 +2,8 @@ from handlers.mainhandler import MainHandler
 from google.appengine.ext import ndb
 import modules.parent_keys as parent_key
 from models.comment import Comment
-from modules.validations import require_user
 
 class PostComment(MainHandler):
-	@require_user()
 	def post(self, user):
 		content = self.request.get("content")
 		post_id = self.request.get("post_id")

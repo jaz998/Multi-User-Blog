@@ -2,7 +2,6 @@ from handlers.mainhandler import MainHandler
 from models.post import Post
 import modules.parent_keys as parent_key
 from google.appengine.ext import ndb
-from modules.validations import require_user
 
 class NewPost(MainHandler):
 	def get(self):
@@ -12,8 +11,7 @@ class NewPost(MainHandler):
 		else:
 			self.redirect('/login')
 
-	@require_user(	)
-	def post(self, user):
+	def post(self):
 		subject = self.request.get("subject")
 		content = self.request.get("content")
 		author = self.user.key

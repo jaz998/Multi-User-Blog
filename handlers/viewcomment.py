@@ -3,8 +3,6 @@ from google.appengine.ext import ndb
 import modules.parent_keys as parent_key
 from models.comment import Comment
 from models.post import Post
-from modules.validations import require_user
-from modules.validations import comment_exists
 
 class ViewComment(MainHandler):
 	def get(self):
