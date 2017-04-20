@@ -1,6 +1,19 @@
 from functools import wraps
 import modules.parent_keys as parent_key
 from google.appengine.ext import ndb
+from handlers.mainhandler import MainHandler
+
+def require_user(f):
+	@wraps(f)
+	def wrapper(self, *args, **kwargs):
+		mainhandler = MainHandler()
+		user = mainhandler.user
+		if user:
+			return f(self, user, *args, **kwargs)
+		else:
+			self.error(404)
+			return
+	return wrapper
 
 
 def post_exists(f):
@@ -15,3 +28,4 @@ def post_exists(f):
 			return 
 	return wrapper
 
+	
