@@ -6,8 +6,7 @@ from handlers.mainhandler import MainHandler
 def require_user(f):
 	@wraps(f)
 	def wrapper(self, *args, **kwargs):
-		mainhandler = MainHandler()
-		user = mainhandler.user
+		user = self.user
 		if user:
 			return f(self, user, *args, **kwargs)
 		else:
