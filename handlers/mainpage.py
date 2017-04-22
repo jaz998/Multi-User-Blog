@@ -18,9 +18,9 @@ class MainPage(MainHandler):
 			self.render("mainPage.html", posts = posts)
 
 	@require_user		
-	def post(self, user):
+	def post(self):
 		self.render("editPost.html", 
-			user = user,
+			user = self.user,
 			post_id = self.request.get("post_id"),
 			post = ndb.Key('Post', int(self.request.get("post_id")), parent=parent_key.blog_key()).get(),
 			postKey = self.request.get("postKey"),

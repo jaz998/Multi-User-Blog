@@ -1,10 +1,10 @@
 from handlers.mainhandler import MainHandler
 from google.appengine.ext import ndb
 import modules.parent_keys as parent_key
-from modules.myownvalidations import post_exists
+from modules.myownvalidations import user_owns_post
 
 class EditPost(MainHandler):
-	@post_exists
+	@user_owns_post
 	def post(self, post_id):
 		subject = self.request.get("subjectValue")
 		content = self.request.get("contentValue")
@@ -13,4 +13,5 @@ class EditPost(MainHandler):
 		post = key.get()
 		post.update(subject, content)
 		self.render("PostEditedConfo.html")
+
 
