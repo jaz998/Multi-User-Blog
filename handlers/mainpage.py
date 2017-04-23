@@ -3,6 +3,7 @@ from handlers.mainhandler import MainHandler
 from models.post import Post
 import modules.parent_keys as parent_key
 from modules.myownvalidations import require_user
+from modules.myownvalidations import post_exists
 
 
 
@@ -17,7 +18,7 @@ class MainPage(MainHandler):
 			posts = ndb.gql("select * from Post order by created desc limit 10")
 			self.render("mainPage.html", posts = posts)
 
-	@require_user		
+	@require_user
 	def post(self):
 		self.render("editPost.html", 
 			user = self.user,
