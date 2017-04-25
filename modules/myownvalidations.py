@@ -18,7 +18,7 @@ def require_user(f):
 def post_exists(f):
 	@wraps(f)
 	def wrapper(self, *args, **kwargs):
-		post_id = self.request.get("post_id")
+		post_id = self.request.get("post_id_value")
 		key = ndb.Key('Post', int(post_id), parent=parent_key.blog_key())
 		post = key.get()
 		if post:
@@ -33,6 +33,7 @@ def user_owns_post(f):
 	@post_exists
 	@wraps(f)
 	def wrapper(self, post_id, *args, **kwargs):
+		post_id = self.request.get("post_id_value")
 		key = ndb.Key('Post', int(post_id), parent=parent_key.blog_key())
 		post = key.get()
 		user = self.user

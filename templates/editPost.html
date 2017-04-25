@@ -3,7 +3,7 @@
 {% block content %}
 <div class="row"><h2>Edit Post</h2></div>
 	<div class="row">
-		<form action="{{ uri_for('editpost', post_id=post_id) }}" method="post">
+		<form action="/editPost" method="post">
 		<br>
 
 		Subject:
@@ -16,7 +16,8 @@
 		<br>
 		<br>
 		<input type="hidden" name="post_id_value" value="{{ post_id }}">
-
+		<input type="text" name="post_id_value" value="{{ post_id }}">
+		<br>
 		<input type="submit" name="submit">
 		</form>
 		<br>

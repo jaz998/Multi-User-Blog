@@ -23,8 +23,8 @@ class MainPage(MainHandler):
 	def post(self):
 		self.render("editPost.html",
 			user = self.user,
-			post_id = self.request.get("post_id"),
-			post = ndb.Key('Post', int(self.request.get("post_id")), parent=parent_key.blog_key()).get(),
+			post_id = self.request.get("post_id_value"),
+			post = ndb.Key('Post', int(self.request.get("post_id_value")), parent=parent_key.blog_key()).get(),
 			postKey = self.request.get("postKey"),
 			subjectValue = self.request.get("subjectValue"),
 			contentValue = self.request.get("contentValue"),

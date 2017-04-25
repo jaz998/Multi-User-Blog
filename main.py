@@ -64,7 +64,7 @@ app = webapp2.WSGIApplication([
     ('/newpost', NewPost),
     ('/', MainPage),
     ('/([0-9]+)', PostPage),
-    webapp2.Route('/editpost/<post_id:[0-9]+>', handler = EditPost, name = 'editpost'),
+    ('/editPost', EditPost),
     ('/deletePost', DeletePost),
     ('/likePost', LikePost),
     ('/unlikePost', UnlikePost),

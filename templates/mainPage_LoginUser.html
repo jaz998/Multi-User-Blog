@@ -13,7 +13,7 @@
 						<form method="post">
 							<!--use a hidden fields to store the subject and contents-->
 							<input type="hidden" value="{{ p }}" name="postValue">
-							<input type="hidden" value="{{ p.key.id() }}" name="post_id">
+							<input type="hidden" value="{{ p.key.id() }}" name="post_id_value">
 							<input type="hidden" value="{{ p.subject }}" name="subjectValue">
 							<input type="hidden" value="{{ p.content }}" name="contentValue">
 							<input type="submit" value="Edit">
@@ -21,7 +21,7 @@
 						
 						<!--delete button-->
 						<form action="/deletePost" method="post">
-							<input type="hidden" value="{{ p.key.id() }}" name="post_id">
+							<input type="hidden" value="{{ p.key.id() }}" name="post_id_value">
 							<input type="submit" value="Delete">							
 						</form>						
 					{% endif %}
@@ -33,7 +33,7 @@
 							{% if user_entity.liked_post(p)%}
 							<div class="row">
 								<form action="/unlikePost" method="post">
-									<input type="hidden" value="{{ p.key.id() }}" name="post_id">
+									<input type="hidden" value="{{ p.key.id() }}" name="post_id_value">
 									<input type="hidden" value="{{ user_entity.key.id() }}" name="user_id">
 									<input type="submit" value="unlike">
 								</form>
@@ -41,7 +41,7 @@
 							{% else %}
 							<div class="row">
 								<form action="/likePost" method="post">
-									<input type="hidden" value="{{ p.key.id() }}" name="post_id">
+									<input type="hidden" value="{{ p.key.id() }}" name="post_id_value">
 									<input type="hidden" value="{{ user_entity.key.id() }}" name="user_id">
 									<br>
 									<input type="submit" value="like">
