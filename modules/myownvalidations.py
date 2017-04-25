@@ -60,4 +60,18 @@ def user_can_like_post(f):
 			return
 	return wrapper
 
+def comment_exists(f):
+	def wrapper(self, *args, **kwargs):
+		post_id = self.request.get("post_id")
+		keyPost = ndb.Key('Post', int(post_id), parent=parent_key.blog_key())
+		post = keyPost.get()
+		comments = post.get_comments()
+		if comments:
+			return f(self, *args, **kwargs)
+		else:
+			self.error(404)
+			return
+	return  wrapper
+
+
 	
