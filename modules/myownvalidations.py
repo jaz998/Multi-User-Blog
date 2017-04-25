@@ -32,13 +32,13 @@ def user_owns_post(f):
 	@require_user
 	@post_exists
 	@wraps(f)
-	def wrapper(self, post_id, *args, **kwargs):
+	def wrapper(self, *args, **kwargs):
 		post_id = self.request.get("post_id_value")
 		key = ndb.Key('Post', int(post_id), parent=parent_key.blog_key())
 		post = key.get()
 		user = self.user
 		if post.author == user.key:
-			return f(self, post_id, *args, **kwargs)
+			return f(self, *args, **kwargs)
 		else:
 			self.error(404)
 			return
