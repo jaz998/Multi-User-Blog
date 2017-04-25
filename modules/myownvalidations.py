@@ -65,13 +65,17 @@ def comment_exists(f):
 		post_id = self.request.get("post_id")
 		keyPost = ndb.Key('Post', int(post_id), parent=parent_key.blog_key())
 		post = keyPost.get()
-		comments = post.get_comments()
-		if comments:
+		comment_id = self.request.get("comment_id")
+		key = ndb.Key('Comment', int(comment_id), parent = post.key)
+		comment = key.get()
+		if comment:
 			return f(self, *args, **kwargs)
 		else:
 			self.error(404)
 			return
 	return  wrapper
+
+
 
 
 	

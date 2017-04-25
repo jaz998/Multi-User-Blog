@@ -33,7 +33,7 @@
 {% if user %}
 <div class="row">
 	<h4>Post New Comment</h4>
-	<form action="{{ uri_for('postcomment', post_id = post.key.id())}}" method="post">
+	<form action="{{ uri_for('postcomment', post_id_value = post.key.id())}}" method="post">
 		<textarea name="content" rows="4" cols="40"></textarea>
 		<br>
 		<input type="submit" value="submit">	
