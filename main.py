@@ -44,17 +44,17 @@ from handlers.updatecomment import UpdateComment
 from handlers.viewcomment import ViewComment
 
 
-#Global variables
+# Global variables
 
 cookies = ''
 
-template_dir = os.path.join(os.path.dirname(__file__),'templates')
-
+template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 
 
 class Blog(MainHandler):
-	def get(self):
-		self.render("blog.html")
+    def get(self):
+        self.render("blog.html")
+
 
 app = webapp2.WSGIApplication([
     ('/signup', Register),
@@ -68,10 +68,9 @@ app = webapp2.WSGIApplication([
     ('/deletePost', DeletePost),
     ('/likePost', LikePost),
     ('/unlikePost', UnlikePost),
-    webapp2.Route('/viewcomment', handler = ViewComment, name ='viewcomment'),
-    webapp2.Route('/postcomment', handler = PostComment, name = 'postcomment'),
-    webapp2.Route('/editcomment', handler = EditComment, name = 'editcomment'),
-    webapp2.Route('/deletecomment', handler = DeleteComment, name = 'deletecomment'),
-    webapp2.Route('/updatecomment', handler = UpdateComment, name = 'updatecomment')
-    ], debug=True)
-
+    webapp2.Route('/viewcomment', handler=ViewComment, name='viewcomment'),
+    webapp2.Route('/postcomment', handler=PostComment, name='postcomment'),
+    webapp2.Route('/editcomment', handler=EditComment, name='editcomment'),
+    webapp2.Route('/deletecomment', handler=DeleteComment, name='deletecomment'),
+    webapp2.Route('/updatecomment', handler=UpdateComment, name='updatecomment')
+], debug=True)

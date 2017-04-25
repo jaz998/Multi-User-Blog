@@ -1,6 +1,6 @@
 import os
 
 config = {
-	'secret' : 'fart',
-	'root_dir': os.path.dirname(os.path.abspath(__file__))
+    'secret': 'fart',
+    'root_dir': os.path.dirname(os.path.abspath(__file__))
 }
