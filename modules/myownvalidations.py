@@ -45,9 +45,11 @@ def user_owns_post(f):
 	return wrapper
 
 def user_can_like_post(f):
+	@require_user
+	@post_exists
 	@wraps(f)
 	def wrapper(self, *args, **kwargs):
-		post_id = self.request.get("post_id")
+		post_id = self.request.get("post_id_value")
 		key = ndb.Key('Post', int(post_id), parent=parent_key.blog_key())
 		post = key.get()
 		user = self.user
