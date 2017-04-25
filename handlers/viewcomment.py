@@ -12,8 +12,6 @@ class ViewComment(MainHandler):
 		keyPost = ndb.Key('Post', int(post_id), parent=parent_key.blog_key())
 		post = keyPost.get()
 		if self.user: 
-			self.write("Post value is\n")
-			self.write(post)
 			self.render('viewcomment.html', post=post, comments = post.get_comments(), user = self.user)
 		else:
 			self.render('viewcomment.html',post=post,comments = post.get_comments())
