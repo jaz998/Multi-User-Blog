@@ -1,9 +1,11 @@
 from handlers.mainhandler import MainHandler
 from google.appengine.ext import ndb
 import modules.parent_keys as parent_key
+from modules.myownvalidations import user_owns_comment
 
 
 class UpdateComment(MainHandler):
+	@user_owns_comment
 	def post(self):
 		content = self.request.get("content")
 		post_id = self.request.get("post_id")
