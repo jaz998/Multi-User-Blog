@@ -1,7 +1,7 @@
 # Multi User Blog
 
 ## What is it?
-Multi User Blog is a simple web blog running on Python 2.7 in which new users can register, log in, create post and comment on other posts.
+Multi User Blog is a simple web blog running on Python 2.7 in which new users can register, log in, create post and comment on other posts. It was created for a project in Udacity Full Stack Web Developer Nanodegree Program. 
 
 Only logined users can do the following: create post and comment on other posts;  edit and delete posts and comments they created; like and unlike posts by other users. 
 
