@@ -97,6 +97,7 @@ def comment_exists(f):
 
 
 def user_owns_comment(f):
+    @require_user
     @comment_exists
     def wrapper(self, *args, **kwargs):
         post_id = self.request.get("post_id")
