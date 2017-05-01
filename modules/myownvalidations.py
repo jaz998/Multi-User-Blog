@@ -90,7 +90,7 @@ def user_owns_comment(f):
         key = ndb.Key('Comment', int(comment_id), parent=post.key)
         comment = key.get()
         user = self.user
-        if user.key == post.author:
+        if user.key == comment.author:
             return f(self, *args, **kwargs)
         else:
             self.error(404)
