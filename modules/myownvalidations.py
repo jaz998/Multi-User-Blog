@@ -2,7 +2,7 @@ from functools import wraps
 import modules.parent_keys as parent_key
 from google.appengine.ext import ndb
 from handlers.mainhandler import MainHandler
-
+from models.user import User
 
 def require_user(f):
     @wraps(f)
@@ -56,7 +56,23 @@ def user_can_like_post(f):
         key = ndb.Key('Post', int(post_id), parent=parent_key.blog_key())
         post = key.get()
         user = self.user
-        if post.author != user.key:
+        if post.author != user.key and not user.liked_post(post):
+            return f(self, *args, **kwargs)
+        else:
+            self.error(404)
+            return
+    return wrapper
+
+def user_can_unlike_post(f):
+    @require_user
+    @post_exists
+    @wraps(f)
+    def wrapper(self, *args, **kwargs):
+        post_id = self.request.get("post_id_value")
+        key = ndb.Key('Post', int(post_id), parent=parent_key.blog_key())
+        post = key.get()
+        user = self.user
+        if post.author != user.key and user.liked_post(post):
             return f(self, *args, **kwargs)
         else:
             self.error(404)
